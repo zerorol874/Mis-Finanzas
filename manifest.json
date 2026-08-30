@@ -2,7 +2,15 @@
   "name": "Mis Finanzas Personales",
   "short_name": "MisFinanzas",
   "start_url": "./index.html",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#f5f7fb",
-  "theme_color": "#0f5f70"
+  "theme_color": "#0f5f70",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2845/2845722.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }

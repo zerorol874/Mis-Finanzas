@@ -11,7 +11,12 @@
   (function() {
     var claveCorrecta = "0912";
     var intento = prompt("Introduce la contraseña para acceder:");
-    if (intento !== claveCorrecta) {
+    
+    while (intento !== claveCorrecta && intento !== null) {
+      intento = prompt("Contraseña incorrecta. Inténtalo de nuevo:");
+    }
+    
+    if (intento === null) {
       document.write("<div style='background:#f5f7fb;height:100vh;display:flex;justify-content:center;align-items:center;font-family:sans-serif;'><h1>Acceso no autorizado</h1></div>");
       window.stop();
     }

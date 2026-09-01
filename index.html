@@ -175,7 +175,7 @@ function migrate(x){let d=structuredClone(defaultData);if(!x)return d;Object.ass
 function persist(){localStorage.setItem(K,JSON.stringify(data));renderAll()}
 function id(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
 function today(){return new Date().toISOString().slice(0,10)}
-function nowMonth(){return today().slice(0,7)}
+function nowMonth(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
 function clampDay(y,m,day){return Math.min(day,new Date(y,m+1,0).getDate())}
 function esc(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function money(n){let cur=data.profile.currency||'CLP';try{return new Intl.NumberFormat('es-CL',{style:'currency',currency:cur,maximumFractionDigits:cur==='CLP'?0:2}).format(Number(n)||0)}catch{return '$'+Math.round(Number(n)||0).toLocaleString('es-CL')}}
@@ -328,7 +328,7 @@ window.addEventListener('afterprint',()=>document.body.classList.remove('print-r
 function resetAll(){if(confirm('¿Seguro? Se borrarán todos los datos guardados en este navegador.')){localStorage.removeItem(K);data=structuredClone(defaultData);persist()}}
 function showModal(x){document.getElementById(x).classList.add('show')}function closeModal(x){document.getElementById(x).classList.remove('show')}
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')}));
-nav();fMonth.value=nowMonth();budgetMonth.value=nowMonth();let dd=new Date(),first=new Date(dd.getFullYear(),dd.getMonth(),1);rFrom.value=first.toISOString().slice(0,10);rTo.value=today();renderAll();
+nav();fMonth.value=nowMonth();budgetMonth.value=nowMonth();let dd=new Date(),y=dd.getFullYear(),m=String(dd.getMonth()+1).padStart(2,'0');rFrom.value=y+'-'+m+'-01';rTo.value=today();renderAll();
 </script>
 </body>
 </html>
